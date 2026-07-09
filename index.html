@@ -2,37 +2,56 @@
 <html lang="vi">
 <head>
 <meta charset="UTF-8">
-<title>Banner chữ chạy</title>
+<title>Banner chữ gõ máy</title>
 <style>
-body{
-    margin:0;
-    overflow:hidden;
-    background:white;
+body {
+    margin: 0;
+    overflow: hidden;
+    background: white;
+    display: flex;
+    align-items: center; /* Căn giữa chữ theo chiều dọc */
+    height: 100vh;       /* Chiều cao toàn màn hình để dễ nhìn */
+    padding-left: 20px;
 }
-.marquee{
-    width:100%;
-    overflow:hidden;
-    white-space:nowrap;
+
+.typewriter-container {
+    display: inline-block;
 }
-.marquee span{
-    display:inline-block;
-    padding-left:100%;
-    font-size:32px;
-    font-weight:bold;
-    color:#d40000;
-    animation:run 12s linear infinite;
+
+.typewriter-container span {
+    display: inline-block;
+    font-size: 32px;
+    font-weight: bold;
+    color: #000000;          /* Màu chữ đen */
+    white-space: nowrap;
+    overflow: hidden;        /* Ẩn phần chữ chưa được gõ */
+    border-right: 3px solid #000; /* Tạo hiệu ứng con trỏ nhấp nháy */
+    
+    /* - gõ máy: chạy trong 8 giây, có 105 bước (tương ứng với số ký tự của câu)
+       - nhấp nháy: hiệu ứng con trỏ nhấp nháy liên tục
+    */
+    animation: 
+        typing 8s steps(105) infinite alternate,
+        blink 0.75s step-end infinite;
 }
-@keyframes run{
-    from{transform:translateX(0);}
-    to{transform:translateX(-100%);}
+
+/* Hiệu ứng gõ chữ: tăng dần chiều rộng từ 0 đến 100% */
+@keyframes typing {
+    from { width: 0; }
+    to { width: 100%; }
+}
+
+/* Hiệu ứng con trỏ nhấp nháy */
+@keyframes blink {
+    from, to { border-color: transparent; }
+    50% { border-color: black; }
 }
 </style>
 </head>
 
 <body>
-<div class="marquee">
-<span>🇻🇳 "Không có gì quý hơn độc lập, tự do." — Nơi lưu giữ, lan tỏa những giá trị tư tưởng, đạo đức 
-và phong cách Hồ Chí Minh. 🇻🇳</span>
+<div class="typewriter-container">
+<span>"Không có gì quý hơn độc lập, tự do." — Nơi lưu giữ, lan tỏa những giá trị tư tưởng, đạo đức và phong cách Hồ Chí Minh.</span>
 </div>
 </body>
 </html>
