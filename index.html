@@ -2,56 +2,57 @@
 <html lang="vi">
 <head>
 <meta charset="UTF-8">
-<title>Banner chữ gõ máy</title>
+<title>Banner chữ gõ máy Google Sites</title>
 <style>
-body {
+/* Cấu hình toàn bộ màn hình của iFrame */
+html, body {
     margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
     overflow: hidden;
-    background: white;
+    background: transparent; /* Để nền trong suốt, ăn theo nền Google Sites */
+}
+
+/* Khung chứa dùng Flexbox để ép chữ luôn vào giữa */
+.container {
     display: flex;
-    align-items: center; /* Căn giữa chữ theo chiều dọc */
-    height: 100vh;       /* Chiều cao toàn màn hình để dễ nhìn */
-    padding-left: 20px;
+    justify-content: center; /* Căn giữa theo chiều ngang */
+    align-items: center;     /* Căn giữa theo chiều dọc */
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    padding: 10px;
 }
 
-.typewriter-container {
-    display: inline-block;
-}
-
-.typewriter-container span {
-    display: inline-block;
-    font-size: 32px;
+.typewriter-text {
+    font-size: 14px;         /* Giảm nhẹ size để vừa với các khung banner nhỏ */
     font-weight: bold;
     color: #000000;          /* Màu chữ đen */
-    white-space: nowrap;
-    overflow: hidden;        /* Ẩn phần chữ chưa được gõ */
-    border-right: 3px solid #000; /* Tạo hiệu ứng con trỏ nhấp nháy */
+    text-align: center;      /* Căn giữa các dòng chữ với nhau */
+    line-height: 1.5;
     
-    /* - gõ máy: chạy trong 8 giây, có 105 bước (tương ứng với số ký tự của câu)
-       - nhấp nháy: hiệu ứng con trỏ nhấp nháy liên tục
-    */
-    animation: 
-        typing 8s steps(105) infinite alternate,
-        blink 0.75s step-end infinite;
+    /* Cho phép chữ tự động xuống dòng khi hết khung */
+    white-space: normal;     
+    word-wrap: break-word;
+
+    /* Hiệu ứng hiện chữ mượt mà thay vì gõ kiểu kéo dài chiều rộng */
+    animation: fadeIn textEffect 1s ease-out forwards;
 }
 
-/* Hiệu ứng gõ chữ: tăng dần chiều rộng từ 0 đến 100% */
-@keyframes typing {
-    from { width: 0; }
-    to { width: 100%; }
-}
-
-/* Hiệu ứng con trỏ nhấp nháy */
-@keyframes blink {
-    from, to { border-color: transparent; }
-    50% { border-color: black; }
+/* Bạn có thể thêm hiệu ứng xuất hiện nhẹ nhàng cho toàn bộ câu chữ */
+@keyframes textEffect {
+    from { opacity: 0; transform: scale(0.95); }
+    to { opacity: 1; transform: scale(1); }
 }
 </style>
 </head>
 
 <body>
-<div class="typewriter-container">
-<span>"Không có gì quý hơn độc lập, tự do." — Nơi lưu giữ, lan tỏa những giá trị tư tưởng, đạo đức và phong cách Hồ Chí Minh.</span>
+<div class="container">
+<p class="typewriter-text">
+"Không có gì quý hơn độc lập, tự do."<br>— Nơi lưu giữ, lan tỏa những giá trị tư tưởng, đạo đức và phong cách Hồ Chí Minh.
+</p>
 </div>
 </body>
 </html>
